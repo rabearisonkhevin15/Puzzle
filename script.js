@@ -66,5 +66,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }); 
     }
+
+    function Winner(){
+        var a = 0;
+        cases.forEach((tile, index) => {
+            console.log("Tile : " + tile);
+            console.log("Index : " + (index+1));
+            if(tile == index+1){
+                a++;
+            }
+            if(a==8){
+                messageGagnant.classList.add('active')
+                return;
+            }
+        });
+    }
     createPuzzle();
 });

@@ -9,6 +9,33 @@ body {
     background-color: #f0f0f0;
 }
 
+.titre{
+    text-align: center;
+    display: none;
+}
+.titre h1{
+    color: red;
+}
+.titre button{
+    background-color: white;
+    border: 1px solid #3498db;
+    width: 150px;
+    height: 35px;
+    border-radius: 25px;
+    color: #3498db;
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
+.titre button:hover{
+    background-color: #3498db;
+    border: none;
+    color: white;
+    transition: all 0.5s ease;
+}
+.titre.active{
+    display: block;
+}
+
 #puzzle {
     display: grid;
     grid-template-columns: repeat(3, 100px);
