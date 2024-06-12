@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (tile === "") {
                 tileElement.classList.add("empty");
             }
+            tileElement.addEventListener("click", () => moveTile(index));
             puzzleContainer.appendChild(tileElement);
         });
     }
@@ -33,6 +34,37 @@ document.addEventListener("DOMContentLoaded", () => {
             // on echange les valeurs des cases
             [array[i], array[j]] = [array[j], array[i]];
         }
+    }
+
+    // fonction qui defini le deplacement valide
+
+    function moveTile(index) {
+        // stocker trouver l'index de la case vide
+        const emptyIndex = cases.indexOf("");
+        const validMoves = [
+            index - 1,    // gauche
+            index + 1,    // droite
+            index - puzzleSize, // haut
+            index + puzzleSize  // bas
+        ];
+
+        if (validMoves.includes(emptyIndex)) {
+            [cases[index], cases[emptyIndex]] = [cases[emptyIndex], cases[index]];
+            updatePuzzle();
+            Winner();
+        }
+    }
+    // mettre a jour la position apres un deplacement valide
+
+    function updatePuzzle() {
+        const tileElements = puzzleContainer.children;
+        cases.forEach((tile, index) => {
+            tileElements[index].textContent = tile;
+            tileElements[index].className = "puzzle-tile";
+            if (tile === "") {
+                tileElements[index].classList.add("empty");
+            }
+        }); 
     }
     createPuzzle();
 });
